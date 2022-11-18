@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+.App {
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+}
+
+.place {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  background-color: rgb(245, 245, 245);
+  color:black;
+  margin:2vh;
+}
+
+.placeTitle {
+  font-size: 3vh;
+  padding:1vh;
+  font-weight: 600;
+}
+
+.placeAddress, .placeContacts {
+  display: flex;
+  flex-direction: row;
+  padding:1vh;
+}
+
+.pHeader{
+  flex: 1 0 35%;
+}
+
+.pText{
+  padding-left: 1vh;
+  flex: 1 0 65%;
+  font-weight: 600;
+}
+
+.weekDay{
+  font-size: 1.5vh;
+}
+
+.holidays {
+  padding-top: 2vh;
+}
