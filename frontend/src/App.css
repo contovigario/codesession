@@ -18,9 +18,10 @@
   font-size: 3vh;
   padding:1vh;
   font-weight: 600;
+  display: flex;
 }
 
-.placeAddress, .placeContacts, .placeWebsite, .placeSchedule {
+.placeAddress, .placeContacts, .placeWebsite, .placeSchedule, .placeRatings {
   display: flex;
   flex-direction: row;
   padding:1vh;
@@ -30,7 +31,7 @@
   padding-top: 0;
 }
 
-.pHeader, .ppad{
+.pHeader {
   flex: 1 0 35%;
 }
 
@@ -39,12 +40,23 @@
   font-weight: 600;
 }
 
+.pTitle {
+  flex: 1 0 80%;
+}
+
+.pStar{
+  flex: 1 0 20%;
+  text-align: right;
+  font-size: 2vh;
+}
+
 .weekDay{
   font-size: 1.5vh;
 }
 
 .holidays {
   padding: 1vh;
+  font-weight: 600;
 }
 
 .schLine {

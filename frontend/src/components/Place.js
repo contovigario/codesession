@@ -35,13 +35,30 @@ function Place({place}) {
     )
   }
 
+  const displayRatings = () => {
+    if(place.display_average_rating && place.average_rating) {
+      return(
+        <div>{place.average_rating.toFixed(1)} ★</div>
+      )
+    }
+    else {
+      return null
+    }
+  }
+
   return (
     <div className="place">
-      <div className="placeTitle">{place.displayed_what ? place.displayed_what : ''}</div>
+      <div className="placeTitle">
+        <div className="pTitle">{place.displayed_what ? place.displayed_what : ''}</div>
+        <div className="pStar">{displayRatings()}</div>
+      </div>
+
+
       <div className="placeAddress">
         <div className="pHeader">Address</div>
         <div className="pText">{place.displayed_where ? place.displayed_where : ''}</div>
       </div>
+
       <div className="placeContacts">
         <div className="pHeader">Contact</div>
         <div className="pText">
