@@ -8,7 +8,7 @@
 .place {
   display: flex;
   flex-direction: column;
-  width: 25vw;
+  width: max-content;
   background-color: rgb(245, 245, 245);
   color:black;
   margin:2vh;
@@ -20,18 +20,21 @@
   font-weight: 600;
 }
 
-.placeAddress, .placeContacts {
+.placeAddress, .placeContacts, .placeWebsite, .placeSchedule {
   display: flex;
   flex-direction: row;
   padding:1vh;
 }
 
-.pHeader{
+.placeScheduleBody {
+  padding-top: 0;
+}
+
+.pHeader, .ppad{
   flex: 1 0 35%;
 }
 
-.pText{
-  padding-left: 1vh;
+.pText {
   flex: 1 0 65%;
   font-weight: 600;
 }
@@ -41,5 +44,11 @@
 }
 
 .holidays {
-  padding-top: 2vh;
+  padding: 1vh;
+}
+
+.schLine {
+  display: block;
+  padding: 1vh;
+  flex: 1 0 65%;
 }
