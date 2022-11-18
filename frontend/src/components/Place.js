@@ -14,7 +14,9 @@ function Place({place}) {
     return (
       <div>
         {placeContacts && placeContacts.map((contact) => (
-          <div key={'pn_' + contact.id}>{contact.call_link}</div>
+          <div key={'pn_' + contact.id}>
+            <a href={"tel:"+contact.call_link}>{contact.call_link}</a>
+          </div>
         ))}
       </div>
     )
@@ -29,7 +31,9 @@ function Place({place}) {
     return (
       <div>
         {placeContacts && placeContacts.map((contact) => (
-          <div key={'url_' + contact.id}>{contact.url}</div>
+          <div key={'url_' + contact.id}>
+            <a href={contact.url} target='_blank'>{contact.url}</a>
+          </div>
         ))}
       </div>
     )
@@ -46,17 +50,38 @@ function Place({place}) {
     }
   }
 
+  const displayAddress = () => {
+
+    let gmQuery = place.displayed_where
+    gmQuery = gmQuery.replace('.', '').replace(' ', '+')
+
+    if(place.displayed_where) {
+      return(
+        <div>
+          <a href={'http://maps.google.com/?q=' + gmQuery} target='_blank'>
+            {place.displayed_where}
+          </a>
+        </div>
+      )
+    }
+    else
+      return null
+    
+  }
+
   return (
     <div className="place">
+
       <div className="placeTitle">
         <div className="pTitle">{place.displayed_what ? place.displayed_what : ''}</div>
         <div className="pStar">{displayRatings()}</div>
       </div>
 
-
       <div className="placeAddress">
         <div className="pHeader">Address</div>
-        <div className="pText">{place.displayed_where ? place.displayed_where : ''}</div>
+        <div className="pText">
+          {displayAddress()}
+        </div>
       </div>
 
       <div className="placeContacts">
