@@ -9,6 +9,8 @@ function App() {
 
   const [places, setPlaces] = useState([]);
 
+
+
   useEffect(() => {
     const validPlaceIds = [
       'GXvPAor1ifNfpF0U5PTG0w',
@@ -17,7 +19,14 @@ function App() {
     async function initialize() {
       validPlaceIds.forEach(placeid => {
         axios.get(baseURL+placeid).then((response) => {
-          setPlaces(places => [...places, response.data])
+          if(response.data.error) {
+            console.log('GET ' + baseURL + placeid + '\nSERVER ERROR: ' + response.data.error)
+          }
+          else {
+            setPlaces(places => [...places, response.data])
+          }
+        }).catch(function (error) {
+          console.log('GET ' + baseURL + placeid + '\nCLIENT ERROR: ' + error.message)
         })
       })
     }
