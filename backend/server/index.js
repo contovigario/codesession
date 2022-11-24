@@ -35,7 +35,9 @@ app.get("/api/place/:id", async(req, res) => {
   }
   catch(error) {
     console.log(error.response)
-    res.json({error: error.response.status + ': ' + error.response.statusText});
+    res.json({error: 'ERROR'
+      //error.response.status + ': ' + error.response.statusText
+    });
   }
 });
 

@@ -2,6 +2,49 @@ import Schedule from "./Schedule"
 
 function Place({place}) {
 
+  const createDateHM = (timestring) => {
+    return (new Date()).setHours(
+      parseInt(timestring.slice(0, 2)) , 
+      parseInt(timestring.slice(3, 5)), 
+      0
+    )
+  }
+
+  const isItOpened = (array, now) => {
+    return array.some(element => (
+      createDateHM(element.start) <= now && now < createDateHM(element.end)
+    ))
+  }
+
+  const getDayArray = (browserTime) => {
+    const browserDayOfWeek = browserTime.getDay()
+    switch(browserDayOfWeek) {
+      case 0:
+        return place.opening_hours.days.sunday
+        
+      case 1:
+        return place.opening_hours.days.monday
+        
+      case 2:
+        return place.opening_hours.days.tuesday
+        
+      case 3:
+        return place.opening_hours.days.wednesday
+        
+      case 4:
+        return place.opening_hours.days.thursday
+        
+      case 5:
+        return place.opening_hours.days.friday
+        
+      case 6:
+        return place.opening_hours.days.saturday
+      
+      default:
+        return []
+    }
+  }
+
   const displayContacts = () => {
     let placeContacts = []
     if(place.contacts) {
@@ -69,6 +112,19 @@ function Place({place}) {
     
   }
 
+  const displayOpenStatus = () => {
+    const browserTime = new Date()
+    let isOpen = isItOpened(getDayArray(browserTime), browserTime)
+    
+    return (
+      <div className={isOpen ? "openStatus opened" : "openStatus closed"}>
+        {isOpen ? "OPEN" : "CLOSED"}
+      </div>
+    )
+  }
+
+  displayOpenStatus()
+
   return (
     <div className="place">
 
@@ -76,6 +132,8 @@ function Place({place}) {
         <div className="pTitle">{place.displayed_what ? place.displayed_what : ''}</div>
         <div className="pStar">{displayRatings()}</div>
       </div>
+
+      {displayOpenStatus()}
 
       <div className="placeAddress">
         <div className="pHeader">Address</div>

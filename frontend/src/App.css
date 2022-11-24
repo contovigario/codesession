@@ -64,3 +64,15 @@
   padding: 1vh;
   flex: 1 0 65%;
 }
+
+.openStatus {
+  padding: 1vh;
+}
+
+.opened {
+  color: green
+}
+
+.closed {
+  color: red
+}
